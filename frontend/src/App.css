@@ -3,101 +3,144 @@
   display: grid;
   place-items: center;
   padding: 24px;
-  background:
-    radial-gradient(circle at top left, #1d4ed8 0%, transparent 32%),
-    radial-gradient(circle at bottom right, #0f766e 0%, transparent 28%),
-    #0d1526;
+  background: radial-gradient(circle at top, #3a3a40 0%, #0b0b0d 55%);
 }
 
-.card {
-  width: min(460px, 100%);
-  padding: 32px;
-  border-radius: 24px;
-  background: rgba(15, 23, 42, 0.88);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+.calculator {
+  width: min(360px, 100%);
+  padding: 22px 18px 18px;
+  border-radius: 32px;
+  background: linear-gradient(180deg, #2f2f33 0%, #17171a 100%);
+  border: 1px solid #111;
+  box-shadow:
+    0 28px 50px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-.eyebrow {
-  margin: 0 0 8px;
-  letter-spacing: 0.16em;
+.brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 6px 14px;
+  color: #9aa0a6;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-size: 12px;
-  color: #7dd3fc;
+  font-size: 11px;
 }
 
-h1 {
-  margin: 0 0 8px;
-  font-size: 28px;
+.brand strong {
+  letter-spacing: 0.18em;
+  color: #d7d7db;
 }
 
-.lede {
-  margin: 0 0 24px;
-  color: #cbd5e1;
-  line-height: 1.5;
-}
-
-.form {
+.display {
   display: grid;
-  gap: 16px;
+  justify-items: end;
+  gap: 4px;
+  min-height: 108px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #d7e0c8 0%, #c3ccb4 100%);
+  color: #1c2414;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
-label {
-  display: grid;
-  gap: 8px;
+.expression {
+  min-height: 18px;
   font-size: 14px;
-  color: #94a3b8;
+  opacity: 0.65;
 }
 
-input {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: #f8fafc;
-  font-size: 18px;
-}
-
-.actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-button {
-  padding: 12px 16px;
-  border: 0;
-  border-radius: 12px;
-  background: #38bdf8;
-  color: #082f49;
+.value {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: clamp(2rem, 8vw, 2.8rem);
   font-weight: 700;
-  cursor: pointer;
-}
-
-button:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}
-
-button.secondary {
-  background: #14b8a6;
-  color: #042f2e;
+  line-height: 1;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .error {
-  margin: 16px 0 0;
-  color: #fda4af;
+  font-size: 12px;
+  color: #8a1f1f;
 }
 
-.result {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "c sign back div"
+    "n7 n8 n9 mul"
+    "n4 n5 n6 minus"
+    "n1 n2 n3 plus"
+    "n0 n0 dot eq";
   gap: 10px;
-  align-items: center;
-  padding: 16px;
-  border-radius: 16px;
-  background: #111827;
-  font-size: 24px;
+  margin-top: 16px;
 }
+
+.key {
+  height: 64px;
+  border: 0;
+  border-radius: 18px;
+  background: #3a3a3e;
+  color: #f5f5f7;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #111;
+}
+
+.key:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #111;
+}
+
+.key:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.key.fn {
+  background: #5c5c63;
+}
+
+.key.op {
+  background: #f5a524;
+  color: #1a1204;
+}
+
+.key.eq {
+  background: #ff7a1a;
+  color: #1a1204;
+  font-size: 28px;
+}
+
+.key.soon {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.key.zero {
+  width: 100%;
+}
+
+.area-c { grid-area: c; }
+.area-sign { grid-area: sign; }
+.area-back { grid-area: back; }
+.area-div { grid-area: div; }
+.area-mul { grid-area: mul; }
+.area-minus { grid-area: minus; }
+.area-plus { grid-area: plus; }
+.area-eq { grid-area: eq; }
+.area-n7 { grid-area: n7; }
+.area-n8 { grid-area: n8; }
+.area-n9 { grid-area: n9; }
+.area-n4 { grid-area: n4; }
+.area-n5 { grid-area: n5; }
+.area-n6 { grid-area: n6; }
+.area-n1 { grid-area: n1; }
+.area-n2 { grid-area: n2; }
+.area-n3 { grid-area: n3; }
+.area-n0 { grid-area: n0; }
+.area-dot { grid-area: dot; }
